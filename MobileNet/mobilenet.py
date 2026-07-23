@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 # -----------------------------
 # DATASET PATH
 # -----------------------------
-dataset_path = "Rice_Leaf_AUG"
+dataset_path = "DATASETS/Rice_Leaf_AUG"
 
 # -----------------------------
 # IMAGE SETTINGS
