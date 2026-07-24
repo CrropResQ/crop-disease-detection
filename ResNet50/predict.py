@@ -6,7 +6,7 @@ from tensorflow.keras.applications.resnet50 import preprocess_input
 import numpy as np
 
 # Load model
-model = load_model("ResNet50/rice_resnet50.keras")
+model = load_model("D:\Projects\crop-disease-detection\ResNet50/rice_resnet50.keras")
 
 # Class labels
 class_names = [
@@ -19,7 +19,7 @@ class_names = [
 ]
 
 # Image path
-img_path = r"test_images/blbb.jpg"
+img_path = r"D:\Projects\crop-disease-detection\ResNet50\test_images\BLB.jpg"
 
 # Load image
 img = image.load_img(img_path, target_size=(224,224))

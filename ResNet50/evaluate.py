@@ -7,10 +7,10 @@ from sklearn.metrics import classification_report
 import numpy as np
 
 # Load trained ResNet50 model
-model = load_model("ResNet50/rice_resnet50.keras")
+model = load_model("D:\Projects\crop-disease-detection\ResNet50/rice_resnet50.keras")
 
 # Evaluation dataset path
-dataset_path = "evaluation_dataset"
+dataset_path = "D:\Projects\crop-disease-detection\ResNet50/evaluation_dataset"
 
 # Image settings
 IMG_SIZE = (224, 224)
