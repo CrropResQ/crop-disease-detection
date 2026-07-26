@@ -1,165 +1,262 @@
+import os
 import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+from tensorflow.keras.callbacks import (
+    EarlyStopping,
+    ModelCheckpoint,
+    ReduceLROnPlateau
+)
 
 import matplotlib
-matplotlib.use('Agg')
-
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# -----------------------------
-# DATASET PATH
-# -----------------------------
-dataset_path = "DATASETS/Rice_Leaf_AUG"
+# ======================================================
+# CONFIGURATION
+# ======================================================
 
-# -----------------------------
-# IMAGE SETTINGS
-# -----------------------------
+DATASET_PATH = "../DATASETS/Rice_Leaf_AUG"
 IMG_SIZE = 224
 BATCH_SIZE = 32
+EPOCHS = 10
+SEED = 123
 
-# -----------------------------
+MODEL_DIR = "models"
+PLOT_DIR = "plots"
+
+os.makedirs(MODEL_DIR, exist_ok=True)
+os.makedirs(PLOT_DIR, exist_ok=True)
+
+# ======================================================
 # LOAD DATASET
-# -----------------------------
+# ======================================================
+
 train_dataset = tf.keras.utils.image_dataset_from_directory(
-    dataset_path,
-    validation_split=0.2,
+    DATASET_PATH,
+    validation_split=0.20,
     subset="training",
-    seed=123,
+    seed=SEED,
     image_size=(IMG_SIZE, IMG_SIZE),
     batch_size=BATCH_SIZE
 )
 
 validation_dataset = tf.keras.utils.image_dataset_from_directory(
-    dataset_path,
-    validation_split=0.2,
+    DATASET_PATH,
+    validation_split=0.20,
     subset="validation",
-    seed=123,
+    seed=SEED,
     image_size=(IMG_SIZE, IMG_SIZE),
     batch_size=BATCH_SIZE
 )
 
-# -----------------------------
-# CLASS NAMES
-# -----------------------------
 class_names = train_dataset.class_names
 
-print("\nClasses Found:")
-print(class_names)
+print("\n===================================")
+print("Classes Found")
+print("===================================")
 
-# -----------------------------
-# PREFETCHING
-# -----------------------------
+for i, cls in enumerate(class_names):
+    print(f"{i} : {cls}")
+
+print("===================================\n")
+
+# ======================================================
+# PERFORMANCE OPTIMIZATION
+# ======================================================
+
 AUTOTUNE = tf.data.AUTOTUNE
 
-train_dataset = train_dataset.prefetch(buffer_size=AUTOTUNE)
-validation_dataset = validation_dataset.prefetch(buffer_size=AUTOTUNE)
+train_dataset = train_dataset.prefetch(AUTOTUNE)
+validation_dataset = validation_dataset.prefetch(AUTOTUNE)
 
-# -----------------------------
-# LOAD MOBILENET MODEL
-# -----------------------------
+# ======================================================
+# DATA AUGMENTATION
+# ======================================================
+
+data_augmentation = tf.keras.Sequential([
+    layers.RandomFlip("horizontal"),
+    layers.RandomRotation(0.10),
+    layers.RandomZoom(0.10),
+    layers.RandomContrast(0.10)
+])
+
+# ======================================================
+# LOAD MOBILENETV2
+# ======================================================
+
 base_model = MobileNetV2(
     input_shape=(IMG_SIZE, IMG_SIZE, 3),
     include_top=False,
-    weights='imagenet'
+    weights="imagenet"
 )
 
-# Freeze pretrained layers
+# Freeze all layers
 base_model.trainable = False
-# base_model.trainable = True
 
-# # Freeze most layers
-# for layer in base_model.layers[:-30]:
-#     layer.trainable = False
-
-
-
-# -----------------------------
+# ======================================================
 # BUILD MODEL
-# -----------------------------
-model = models.Sequential([
-    layers.Rescaling(1./127.5, offset=-1),
+# ======================================================
 
-    base_model,
+inputs = layers.Input(shape=(IMG_SIZE, IMG_SIZE, 3))
 
-    layers.GlobalAveragePooling2D(),
+x = data_augmentation(inputs)
 
-    layers.Dense(128, activation='relu'),
+x = preprocess_input(x)
 
-    layers.Dense(len(class_names), activation='softmax')
-])
+x = base_model(x, training=False)
 
-# -----------------------------
-# COMPILE MODEL
-# -----------------------------
+x = layers.GlobalAveragePooling2D()(x)
+
+x = layers.Dropout(0.30)(x)
+
+x = layers.Dense(256, activation="relu")(x)
+
+x = layers.Dropout(0.30)(x)
+
+outputs = layers.Dense(
+    len(class_names),
+    activation="softmax"
+)(x)
+
+model = models.Model(inputs, outputs)
+
+# ======================================================
+# COMPILE
+# ======================================================
+
 model.compile(
-    optimizer='adam',
-    loss='sparse_categorical_crossentropy',
-    metrics=['accuracy']
+    optimizer=tf.keras.optimizers.Adam(learning_rate=1e-4),
+    loss="sparse_categorical_crossentropy",
+    metrics=["accuracy"]
 )
 
-# -----------------------------
-# MODEL SUMMARY
-# -----------------------------
 model.summary()
 
-# -----------------------------
-# TRAIN MODEL
-# -----------------------------
+# ======================================================
+# CALLBACKS
+# ======================================================
+
+callbacks = [
+
+    EarlyStopping(
+        monitor="val_loss",
+        patience=5,
+        restore_best_weights=True,
+        verbose=1
+    ),
+
+    ModelCheckpoint(
+        filepath=os.path.join(MODEL_DIR, "mobilenet.keras"),
+        monitor="val_accuracy",
+        save_best_only=True,
+        verbose=1
+    ),
+
+    ReduceLROnPlateau(
+        monitor="val_loss",
+        factor=0.2,
+        patience=3,
+        verbose=1
+    )
+
+]
+
+# ======================================================
+# TRAIN
+# ======================================================
+
 history = model.fit(
     train_dataset,
     validation_data=validation_dataset,
-    epochs=4
+    epochs=EPOCHS,
+    callbacks=callbacks
 )
 
-# -----------------------------
-# EVALUATE MODEL
-# -----------------------------
+# ======================================================
+# FINAL VALIDATION
+# ======================================================
+
 loss, accuracy = model.evaluate(validation_dataset)
 
-print("\nValidation Accuracy:", accuracy * 100)
+print("\n===================================")
+print(f"Validation Loss     : {loss:.4f}")
+print(f"Validation Accuracy : {accuracy*100:.2f}%")
+print("===================================")
 
-
-# -----------------------------
+# ======================================================
 # ACCURACY GRAPH
-# -----------------------------
-plt.figure()
+# ======================================================
 
-plt.plot(history.history['accuracy'])
-plt.plot(history.history['val_accuracy'])
+plt.figure(figsize=(8,5))
 
-plt.title('MobileNetV2 Accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
+plt.plot(
+    history.history["accuracy"],
+    label="Training Accuracy"
+)
 
-plt.legend(['Training', 'Validation'])
+plt.plot(
+    history.history["val_accuracy"],
+    label="Validation Accuracy"
+)
 
-plt.savefig("mobilenet_accuracy.png")
+plt.title("MobileNetV2 Accuracy")
 
-print("Accuracy Graph Saved")
+plt.xlabel("Epoch")
 
-# -----------------------------
+plt.ylabel("Accuracy")
+
+plt.legend()
+
+plt.grid(True)
+
+plt.tight_layout()
+
+plt.savefig(
+    os.path.join(PLOT_DIR, "accuracy.png"),
+    dpi=300
+)
+
+plt.close()
+
+# ======================================================
 # LOSS GRAPH
-# -----------------------------
-plt.figure()
+# ======================================================
 
-plt.plot(history.history['loss'])
-plt.plot(history.history['val_loss'])
+plt.figure(figsize=(8,5))
 
-plt.title('MobileNetV2 Loss')
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
+plt.plot(
+    history.history["loss"],
+    label="Training Loss"
+)
 
-plt.legend(['Training', 'Validation'])
+plt.plot(
+    history.history["val_loss"],
+    label="Validation Loss"
+)
 
-plt.savefig("mobilenet_loss.png")
+plt.title("MobileNetV2 Loss")
 
-print("Loss Graph Saved")
+plt.xlabel("Epoch")
 
+plt.ylabel("Loss")
 
+plt.legend()
 
+plt.grid(True)
 
-model.save("rice_disease_mobilenet.h5")
+plt.tight_layout()
 
-print("\nModel Saved Successfully")
+plt.savefig(
+    os.path.join(PLOT_DIR, "loss.png"),
+    dpi=300
+)
+
+plt.close()
+
+print("\nGraphs saved successfully.")
+
+print("Model saved successfully.")
+
+print("\nTraining Complete.")
