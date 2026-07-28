@@ -2,3 +2,6 @@ venv/
 __pycache__/
 *.pyc
 ViT/models/
+*.h5
+Rice_Leaf_AUG/
+test_images/
