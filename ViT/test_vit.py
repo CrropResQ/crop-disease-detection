@@ -1,75 +1,52 @@
-import os
 import torch
 from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
 from transformers import ViTForImageClassification
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    classification_report
+)
+import matplotlib.pyplot as plt
 
-# -------------------------------
-# DEVICE
-# -------------------------------
+# ---------------- DEVICE ----------------
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
-if torch.cuda.is_available():
-    print("GPU:", torch.cuda.get_device_name(0))
+# ---------------- DATASET PATH ----------------
 
-# -------------------------------
-# PATHS
-# -------------------------------
-TRAIN_PATH = r"C:\Users\Vaishnav\Downloads\archive\Rice_Leaf_Diease\Rice_Leaf_Diease\train"
-TEST_PATH  = r"C:\Users\Vaishnav\Downloads\archive\Rice_Leaf_Diease\Rice_Leaf_Diease\test"
+TEST_PATH = r"C:\Users\Vaishnav\Downloads\archive\Rice_Leaf_Diease\Rice_Leaf_Diease\test"
 
-# -------------------------------
-# TRANSFORMS
-# -------------------------------
+# ---------------- TRANSFORM ----------------
+
 transform = transforms.Compose([
-    transforms.Resize((224,224)),
+    transforms.Resize((224, 224)),
     transforms.ToTensor()
 ])
 
-# -------------------------------
-# LOAD TRAIN DATASET
-# (Only to get the class mapping)
-# -------------------------------
-train_data = datasets.ImageFolder(
-    TRAIN_PATH,
-    transform=transform
-)
+# ---------------- LOAD TEST DATA ----------------
 
-print("\nTraining Classes")
-print(train_data.classes)
+test_data = datasets.ImageFolder(TEST_PATH, transform=transform)
 
-# -------------------------------
-# LOAD TEST DATASET
-# -------------------------------
-test_data = datasets.ImageFolder(
-    TEST_PATH,
-    transform=transform
-)
-
-print("\nOriginal Test Classes")
-print(test_data.classes)
-
-# Force the test dataset to use the
-# same mapping as the training dataset
-
-test_data.class_to_idx = train_data.class_to_idx
-
-test_loader = torch.utils.data.DataLoader(
+test_loader = DataLoader(
     test_data,
     batch_size=16,
-    shuffle=False,
-    num_workers=0
+    shuffle=False
 )
 
-# -------------------------------
-# LOAD MODEL
-# -------------------------------
+print(f"Loaded {len(test_data)} test images")
+print("Classes:", test_data.classes)
+
+# ---------------- LOAD MODEL ----------------
+
 model = ViTForImageClassification.from_pretrained(
     "google/vit-base-patch16-224",
-    num_labels=len(train_data.classes),
+    num_labels=len(test_data.classes),
     ignore_mismatched_sizes=True
 )
 
+# CHANGE THIS IF YOUR FILE IS vit.pth
 model.load_state_dict(
     torch.load("models/vit_rice.pth", map_location=device)
 )
@@ -77,27 +54,89 @@ model.load_state_dict(
 model.to(device)
 model.eval()
 
-# -------------------------------
-# TEST
-# -------------------------------
-correct = 0
-total = 0
+# ---------------- TEST ----------------
+
+all_preds = []
+all_labels = []
 
 with torch.no_grad():
 
     for images, labels in test_loader:
 
         images = images.to(device)
-        labels = labels.to(device)
 
-        outputs = model(images).logits
+        outputs = model(pixel_values=images)
 
-        _, predicted = torch.max(outputs, 1)
+        preds = torch.argmax(outputs.logits, dim=1)
 
-        total += labels.size(0)
+        all_preds.extend(preds.cpu().numpy())
+        all_labels.extend(labels.numpy())
 
-        correct += (predicted == labels).sum().item()
+# ---------------- ACCURACY ----------------
 
-accuracy = 100 * correct / total
+accuracy = accuracy_score(all_labels, all_preds)
 
-print(f"\nTest Accuracy : {accuracy:.2f}%")
+print("\n===================================")
+print(f"Test Accuracy : {accuracy * 100:.2f}%")
+print("===================================\n")
+
+# ---------------- CLASSIFICATION REPORT ----------------
+
+print(classification_report(
+    all_labels,
+    all_preds,
+    target_names=test_data.classes
+))
+
+# ---------------- CONFUSION MATRIX ----------------
+
+cm = confusion_matrix(all_labels, all_preds)
+
+plt.figure(figsize=(12, 10))
+
+plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+
+plt.title("Confusion Matrix")
+plt.colorbar()
+
+tick_marks = range(len(test_data.classes))
+
+plt.xticks(
+    tick_marks,
+    test_data.classes,
+    rotation=90
+)
+
+plt.yticks(
+    tick_marks,
+    test_data.classes
+)
+
+plt.xlabel("Predicted Label")
+plt.ylabel("True Label")
+
+threshold = cm.max() / 2
+
+for i in range(cm.shape[0]):
+    for j in range(cm.shape[1]):
+
+        plt.text(
+            j,
+            i,
+            str(cm[i, j]),
+            ha="center",
+            va="center",
+            color="white" if cm[i, j] > threshold else "black"
+        )
+
+plt.tight_layout()
+
+plt.savefig(
+    "confusion_matrix.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.show()
+
+print("\nConfusion Matrix saved as confusion_matrix.png")
