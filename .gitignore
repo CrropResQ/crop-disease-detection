@@ -1,6 +1,7 @@
+venv/
 __pycache__/
 *.pyc
-*.keras
+ViT/models/
 *.h5
 Rice_Leaf_AUG/
 test_images/

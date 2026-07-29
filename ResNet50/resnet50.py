@@ -20,7 +20,7 @@ import os #added by varun to imoprt dataset from relative folder
 
 #Dataset path to the one that exists in the other relative folder (edited by varun)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-dataset_path = os.path.join(BASE_DIR, "..", "MobileNet", "Rice_Leaf_AUG")
+dataset_path = os.path.join(BASE_DIR, "..", "DATASETS", "Rice_Leaf_AUG")
 
 
 

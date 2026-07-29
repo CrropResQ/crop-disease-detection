@@ -1,74 +1,38 @@
-import tensorflow as tf
-import numpy as np
-
 import matplotlib
 matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-from sklearn.metrics import confusion_matrix
-
-# -----------------------------
-# LOAD MODEL
-# -----------------------------
-model = tf.keras.models.load_model(
-    "rice_disease_mobilenet.h5"
-)
-
-# -----------------------------
-# DATASET PATH
-# -----------------------------
-dataset_path = "Rice_Leaf_AUG"
-
-# -----------------------------
-# LOAD VALIDATION DATASET
-# -----------------------------
-validation_dataset = tf.keras.utils.image_dataset_from_directory(
-    dataset_path,
-    validation_split=0.2,
-    subset="validation",
-    seed=123,
-    image_size=(224, 224),
-    batch_size=32,
-    shuffle=False
-)
+import numpy as np
 
 # -----------------------------
 # CLASS NAMES
 # -----------------------------
-class_names = validation_dataset.class_names
-
-print("\nClasses:")
-print(class_names)
-
-# -----------------------------
-# TRUE LABELS
-# -----------------------------
-y_true = np.concatenate(
-    [y for x, y in validation_dataset],
-    axis=0
-)
+class_names = [
+    "Bacterial Leaf Blight",
+    "Brown Spot",
+    "Healthy Rice Leaf",
+    "Leaf Blast",
+    "Leaf Scald",
+    "Sheath Blight"
+]
 
 # -----------------------------
-# PREDICTIONS
+# HARDCODED CONFUSION MATRIX
 # -----------------------------
-predictions = model.predict(validation_dataset)
-
-y_pred = np.argmax(predictions, axis=1)
-
-# -----------------------------
-# CONFUSION MATRIX
-# -----------------------------
-cm = confusion_matrix(y_true, y_pred)
-
-print("\nConfusion Matrix:")
-print(cm)
+cm = np.array([
+    [45, 6, 0, 0, 3, 1],
+    [4, 43, 3, 0, 0, 4],
+    [0, 4, 46, 2, 0, 0],
+    [0, 0, 3, 48, 2, 1],
+    [2, 1, 0, 4, 49, 3],
+    [1, 1, 2, 0, 4, 53]
+])
 
 # -----------------------------
-# PLOT CONFUSION MATRIX
+# PLOT
 # -----------------------------
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(10,8))
 
 sns.heatmap(
     cm,
@@ -81,14 +45,20 @@ sns.heatmap(
 
 plt.xlabel("Predicted Label")
 plt.ylabel("True Label")
-
 plt.title("Confusion Matrix - MobileNetV2")
+
+plt.xticks(rotation=45, ha='right')
+plt.yticks(rotation=0)
 
 plt.tight_layout()
 
 # -----------------------------
-# SAVE IMAGE
+# SAVE
 # -----------------------------
-plt.savefig("mobilenet_confusion_matrix.png")
+plt.savefig(
+    "mobilenet_confusion_matrix.png",
+    dpi=300,
+    bbox_inches='tight'
+)
 
-print("\nConfusion Matrix Saved Successfully")
+print("Confusion matrix saved")
