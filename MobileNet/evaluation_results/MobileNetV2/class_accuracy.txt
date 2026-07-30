@@ -1,0 +1,6 @@
+Bacterial Leaf Blight: 67.72%
+Brown Spot: 71.32%
+Healthy Rice Leaf: 93.08%
+Leaf Blast: 39.68%
+Leaf scald: 77.60%
+Sheath Blight: 92.86%

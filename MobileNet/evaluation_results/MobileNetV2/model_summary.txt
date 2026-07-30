@@ -1,0 +1,5 @@
+Model : MobileNetV2
+Model Size : 24.61 MB
+Total Parameters : 2587462
+Trainable Parameters : 1855878
+Non Trainable Parameters : 731584
