@@ -1,0 +1,3 @@
+Validation Loss : 1.0477
+Validation Accuracy : 59.63%
+Training Time : 826.31 seconds

@@ -172,10 +172,11 @@ def evaluate_model(
     # ===========================
 
     report = classification_report(
-        true_classes,
-        predicted_classes,
-        target_names=class_labels
-    )
+    true_classes,
+    predicted_classes,
+    target_names=class_labels,
+    digits=4
+)
 
     print(report)
 
@@ -238,6 +239,22 @@ def evaluate_model(
     plt.close()
 
     # ===========================
+    # Class-wise Accuracy
+    # ===========================
+
+    class_accuracy = cm.diagonal() / cm.sum(axis=1)
+
+    with open(
+        os.path.join(output_dir, "class_accuracy.txt"),
+        "w"
+    ) as f:
+
+        for label, acc in zip(class_labels, class_accuracy):
+            f.write(
+                f"{label}: {acc*100:.2f}%\n"
+            )
+
+    # ===========================
     # Accuracy Graph
     # ===========================
 
@@ -295,18 +312,14 @@ def evaluate_model(
 
     plt.close()
 
-    # ===========================
+     # ===========================
     # Model Information
     # ===========================
 
-    # model_size = os.path.getsize(model_name + ".keras") / (1024 * 1024)
-if model_path is not None and os.path.exists(model_path):
-    model_size = os.path.getsize(model_path) / (1024 * 1024)
-else:
-    model_size = 0
-
-
-
+    if model_path is not None and os.path.exists(model_path):
+        model_size = os.path.getsize(model_path) / (1024 * 1024)
+    else:
+        model_size = 0
 
     total_params = model.count_params()
 
