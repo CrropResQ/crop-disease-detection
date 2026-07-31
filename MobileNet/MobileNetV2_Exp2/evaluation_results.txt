@@ -1,0 +1,39 @@
+============================================================
+MobileNetV2_Exp2 — EVALUATION RESULTS
+============================================================
+
+--- Training Information ---
+Total Training Time (s)  : 1633.89
+Best Epoch               : 6
+Final Validation Accuracy: 0.4993
+Final Validation Loss    : 7.8101
+
+--- Prediction Timing ---
+Total Prediction Time (s)     : 26.7272
+Avg Prediction Time/Image (s) : 0.035029
+
+--- Performance Metrics ---
+Accuracy            : 0.7182
+Precision_Macro     : 0.7674
+Precision_Weighted  : 0.7680
+Recall_Macro        : 0.7180
+Recall_Weighted     : 0.7182
+F1_Macro            : 0.7094
+F1_Weighted         : 0.7100
+Cohens_Kappa        : 0.6619
+MCC                 : 0.6744
+
+--- Confusion Matrix (rows=true, cols=pred) ---
+Classes: Bacterial Leaf Blight, Brown Spot, Healthy Rice Leaf, Leaf Blast, Leaf scald, Sheath Blight
+[[ 44  12   1  29  41   0]
+ [  0  83  18   6  22   0]
+ [  0   0 126   0   4   0]
+ [  4  12   5  88  17   0]
+ [  0   1   4   3 117   0]
+ [  4   1   2   6  23  90]]
+
+--- Model Summary ---
+Total Parameters         : 2,587,462
+Trainable Parameters     : 1,855,878
+Non-trainable Parameters : 731,584
+Model Size (MB)          : 24.61
