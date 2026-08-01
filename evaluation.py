@@ -39,10 +39,10 @@ def evaluate_model(
 
     os.makedirs(output_dir, exist_ok=True)
 
-    # Reset generator
-    val_data.reset()
+    # ===========================
+    # Prediction
+    # ===========================
 
-    # Prediction time
     start = time.time()
 
     predictions = model.predict(val_data, verbose=1)
@@ -51,9 +51,25 @@ def evaluate_model(
 
     predicted_classes = np.argmax(predictions, axis=1)
 
-    true_classes = val_data.classes
+    # Collect true labels from tf.data.Dataset
+    true_classes = []
 
-    class_labels = list(val_data.class_indices.keys())
+    for _, labels in val_data:
+        true_classes.extend(np.argmax(labels.numpy(), axis=1))
+
+    true_classes = np.array(true_classes)
+
+    if hasattr(val_data, "class_names"):
+        class_labels = val_data.class_names
+    else:
+        class_labels = [
+            "Bacterial Leaf Blight",
+            "Brown Spot",
+            "Healthy Rice Leaf",
+            "Leaf Blast",
+            "Leaf scald",
+            "Sheath Blight"
+        ]
 
     # ===========================
     # Metrics
@@ -170,14 +186,18 @@ def evaluate_model(
     # ===========================
     # Classification Report
     # ===========================
+    print("Class labels:", class_labels)
+    print("Unique true classes:", np.unique(true_classes, return_counts=True))
+    print("Unique predicted classes:", np.unique(predicted_classes, return_counts=True))
 
     report = classification_report(
     true_classes,
     predicted_classes,
+    labels=range(len(class_labels)),
     target_names=class_labels,
-    digits=4
+    digits=4,
+    zero_division=0
 )
-
     print(report)
 
     with open(
@@ -206,9 +226,10 @@ def evaluate_model(
     # ===========================
 
     cm = confusion_matrix(
-        true_classes,
-        predicted_classes
-    )
+    true_classes,
+    predicted_classes,
+    labels=range(len(class_labels))
+)
 
     plt.figure(figsize=(10,8))
 
@@ -312,7 +333,7 @@ def evaluate_model(
 
     plt.close()
 
-     # ===========================
+    # ===========================
     # Model Information
     # ===========================
 
@@ -343,3 +364,4 @@ def evaluate_model(
         f.write(f"Non Trainable Parameters : {non_trainable_params}\n")
 
     print("\nEvaluation Completed Successfully.")
+

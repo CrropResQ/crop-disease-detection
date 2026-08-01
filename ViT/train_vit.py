@@ -1,122 +1,330 @@
 import os
-import torch
-from torch.utils.data import DataLoader
-from torchvision import datasets, transforms
-from transformers import ViTForImageClassification
-from tqdm import tqdm
+import sys
+import time
+import pickle
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
-def main():
+from sklearn.metrics import (
+    classification_report,
+    confusion_matrix
+)
 
-    # -------------------------------
-    # DEVICE
-    # -------------------------------
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"Using device: {device}")
+import tensorflow as tf
 
-    if torch.cuda.is_available():
-        print("GPU:", torch.cuda.get_device_name(0))
+# ------------------------------------------------------------
+# ViT backbone
+# ------------------------------------------------------------
+# `vit-keras` is no longer usable: it hard-imports `tensorflow_addons`,
+# which reached end-of-life in May 2024 and stopped supporting current
+# TensorFlow/Keras versions (its repo is now archived). We use `keras_hub`
+# instead -- Keras's own, actively maintained model hub, which ships a
+# native ViT implementation with ImageNet-pretrained weights and no
+# tensorflow_addons dependency.
+#
+#   pip install --upgrade keras keras-hub tensorflow
+#
+import keras
+import keras_hub
 
-    # -------------------------------
-    # DATASET PATH
-    # -------------------------------
-    DATASET_PATH = r"C:\Users\Vaishnav\Downloads\archive\Rice_Leaf_Diease\Rice_Leaf_Diease\train"
+from keras import layers
+from keras.models import load_model
 
-    # -------------------------------
-    # IMAGE TRANSFORMS
-    # -------------------------------
-    transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-    ])
 
-    # -------------------------------
-    # LOAD DATASET
-    # -------------------------------
-    train_data = datasets.ImageFolder(
-        DATASET_PATH,
-        transform=transform
+from keras.optimizers import Adam, SGD, RMSprop
+
+from keras.callbacks import (
+    EarlyStopping,
+    ModelCheckpoint
+)
+
+# Project Root
+# NOTE: __file__ is only defined when running as a script (python script.py).
+# In notebooks / interactive cells (Jupyter, VS Code interactive window) it
+# doesn't exist, so we fall back to the current working directory instead.
+# __file__ points at a FILE, so BASE_DIR = dirname(__file__).
+# cwd already IS a directory, so in the fallback case BASE_DIR = cwd directly
+# (no extra dirname(), or you'd climb one level too high).
+try:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    BASE_DIR = os.path.abspath(os.getcwd())
+
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
+
+sys.path.insert(0, PROJECT_ROOT)
+
+from evaluation import evaluate_model
+
+# ============================================================
+# Configuration
+# ============================================================
+
+dataset_path = os.path.join(
+    BASE_DIR,
+    "..",
+    "DATASETS",
+    "Rice_Leaf_AUG"
+)
+
+IMG_SIZE = (224, 224)
+
+BATCH_SIZE = 32
+
+EPOCHS = 25
+
+LEARNING_RATE = 1e-5
+
+# One of: "adam", "sgd", "rmsprop"
+# Change this per the hyperparameter tuning plan (experiments 7-9 sweep
+# the optimizer while LR / batch size stay fixed at their best values).
+OPTIMIZER_NAME = "adam"
+
+MODEL_NAME = "ViT-B16"
+
+MODEL_FILE = "rice_vit_b16.keras"
+
+# keras_hub preset name for ViT-B16 @ 224x224, ImageNet-pretrained.
+# See https://keras.io/keras_hub/api/models/vit/vit_backbone/ for the
+# full preset list (e.g. swap to "vit_base_patch16_224_imagenet21k" if
+# you want the ImageNet-21k-only backbone instead).
+VIT_PRESET = "vit_base_patch16_224_imagenet"
+
+# Number of trailing backbone layers to keep trainable during fine-tuning
+# (mirrors the "freeze early layers" strategy used for MobileNetV2 /
+# ResNet50 elsewhere in this study, where the last 30 layers are trainable).
+UNFROZEN_LAYERS = 4
+
+
+def get_optimizer(name, lr):
+    name = name.lower()
+    if name == "adam":
+        return Adam(learning_rate=lr)
+    elif name == "sgd":
+        return SGD(learning_rate=lr, momentum=0.9)
+    elif name == "rmsprop":
+        return RMSprop(learning_rate=lr)
+    else:
+        raise ValueError(f"Unknown optimizer: {name}")
+
+
+# ============================================================
+# Load Dataset (tf.data)
+# ============================================================
+
+train_ds = tf.keras.utils.image_dataset_from_directory(
+    dataset_path,
+    validation_split=0.2,
+    subset="training",
+    seed=42,
+    image_size=IMG_SIZE,
+    batch_size=BATCH_SIZE,
+    label_mode="categorical",
+    shuffle=True
+)
+
+val_ds = tf.keras.utils.image_dataset_from_directory(
+    dataset_path,
+    validation_split=0.2,
+    subset="validation",
+    seed=42,
+    image_size=IMG_SIZE,
+    batch_size=BATCH_SIZE,
+    label_mode="categorical",
+    shuffle=False
+)
+
+# ============================================================
+# Dataset Information
+# ============================================================
+
+class_names = train_ds.class_names
+num_classes = len(class_names)
+
+class_indices = {name: idx for idx, name in enumerate(class_names)}
+
+print(f"\nDetected Classes: {num_classes}")
+print(class_indices)
+
+with open("class_indices.pkl", "wb") as f:
+    pickle.dump(class_indices, f)
+
+# ============================================================
+# Data Augmentation
+# ============================================================
+
+data_augmentation = keras.Sequential([
+    layers.RandomFlip("horizontal"),
+    layers.RandomRotation(0.15),
+    layers.RandomZoom(0.20),
+    layers.RandomTranslation(0.20, 0.20),
+])
+
+normalization = layers.Rescaling(
+    scale=1/127.5,
+    offset=-1
+)
+
+AUTOTUNE = tf.data.AUTOTUNE
+
+train_ds = (
+    train_ds
+    .map(
+        lambda x, y: (
+            normalization(data_augmentation(x, training=True)),
+            y
+        ),
+        num_parallel_calls=AUTOTUNE
     )
+    .prefetch(AUTOTUNE)
+)
 
-    train_loader = DataLoader(
-        train_data,
-        batch_size=16,
-        shuffle=True,
-        num_workers=0,      # IMPORTANT FOR WINDOWS
-        pin_memory=True
+val_ds = (
+    val_ds
+    .map(
+        lambda x, y: (
+            normalization(x),
+            y
+        ),
+        num_parallel_calls=AUTOTUNE
     )
+    .prefetch(AUTOTUNE)
+)
 
-    print(f"\nLoaded {len(train_data)} images")
-    print(f"Detected {len(train_data.classes)} classes")
-    print(train_data.classes)
+backbone = keras_hub.models.ViTBackbone.from_preset(VIT_PRESET)
 
-    # -------------------------------
-    # LOAD PRETRAINED ViT
-    # -------------------------------
-    model = ViTForImageClassification.from_pretrained(
-        "google/vit-base-patch16-224",
-        num_labels=len(train_data.classes),
-        ignore_mismatched_sizes=True
-    )
+backbone.trainable = False
 
-    model.to(device)
+print("\n===== Backbone Layers =====")
+for i, layer in enumerate(backbone.layers):
+    print(i, layer.name, type(layer))
+print("===========================\n")
 
-    optimizer = torch.optim.AdamW(
-        model.parameters(),
-        lr=5e-5
-    )
+model = keras_hub.models.ViTImageClassifier(
+    backbone=backbone,
+    num_classes=num_classes,
+    preprocessor=None,
+    pooling="gap",
+    intermediate_dim=256,
+    activation="softmax",
+    dropout=0.5,
+)
 
-    criterion = torch.nn.CrossEntropyLoss()
+# ============================================================
+# Build Model
+# ============================================================
+# ViTImageClassifier wraps the backbone with a pooling + Dense head.
+# pooling="gap" averages over all patch tokens (the same role
+# GlobalAveragePooling1D played over the ViT's token sequence in the
+# vit-keras version), rather than using only the [CLS] token.
+# preprocessor=None because preprocessing is already handled by
+# ImageDataGenerator above.
 
-    epochs = 5
+model = keras_hub.models.ViTImageClassifier(
+    backbone=backbone,
+    num_classes=num_classes,
+    preprocessor=None,
+    pooling="gap",
+    intermediate_dim=256,
+    activation="softmax",
+    dropout=0.5,
+)
 
-    # -------------------------------
-    # TRAINING
-    # -------------------------------
-    model.train()
+# ============================================================
+# Compile Model
+# ============================================================
 
-    for epoch in range(epochs):
+model.compile(
+    optimizer=get_optimizer(OPTIMIZER_NAME, LEARNING_RATE),
+    loss="categorical_crossentropy",
+    metrics=["accuracy"]
+)
 
-        running_loss = 0
+model.summary()
 
-        progress = tqdm(
-            train_loader,
-            desc=f"Epoch {epoch+1}/{epochs}"
-        )
+with open("model_summary.txt", "w", encoding="utf-8") as f:
+    model.summary(print_fn=lambda x: f.write(x + "\n"))
 
-        for images, labels in progress:
+print("Model summary saved.")
 
-            images = images.to(device, non_blocking=True)
-            labels = labels.to(device, non_blocking=True)
+# ============================================================
+# Callbacks
+# ============================================================
 
-            optimizer.zero_grad()
+early_stop = EarlyStopping(
+    monitor="val_loss",
+    patience=5,
+    restore_best_weights=True,
+    verbose=1
+)
 
-            outputs = model(images).logits
+checkpoint = ModelCheckpoint(
+    MODEL_FILE,
+    monitor="val_accuracy",
+    save_best_only=True,
+    verbose=1
+)
 
-            loss = criterion(outputs, labels)
+# ============================================================
+# Train Model
+# ============================================================
 
-            loss.backward()
+print("\nStarting Training...\n")
 
-            optimizer.step()
+start_time = time.time()
 
-            running_loss += loss.item()
+history = model.fit(
+    train_ds,
+    validation_data=val_ds,
+    epochs=EPOCHS,
+    callbacks=[
+        early_stop,
+        checkpoint
+    ]
+)
+training_time = time.time() - start_time
 
-            progress.set_postfix(loss=f"{loss.item():.4f}")
+print(f"\nTraining completed in {training_time:.2f} seconds")
 
-        avg_loss = running_loss / len(train_loader)
+# ============================================================
+# Save Training History
+# ============================================================
 
-        print(f"\nEpoch {epoch+1} Average Loss: {avg_loss:.4f}")
+with open("history.pkl", "wb") as f:
+    pickle.dump(history.history, f)
 
-    # -------------------------------
-    # SAVE MODEL
-    # -------------------------------
-    os.makedirs("models", exist_ok=True)
+print("Training history saved.")
 
-    torch.save(model.state_dict(), "models/vit_rice.pth")
+# ============================================================
+# Evaluate Model
+# ============================================================
+# keras_hub registers its custom layers/classes with Keras's saving
+# registry on import, so as long as `keras_hub` has been imported
+# (it has, above), load_model needs no custom_objects argument.
 
-    print("\nTraining Complete!")
-    print("Model saved to models/vit_rice.pth")
+model = load_model(MODEL_FILE)
 
+model.compile(
+    optimizer=get_optimizer(OPTIMIZER_NAME, LEARNING_RATE),
+    loss="categorical_crossentropy",
+    metrics=["accuracy"]
+)
 
-if __name__ == "__main__":
-    main()
+loss, accuracy = model.evaluate(val_ds)
+
+print(f"\nValidation Loss: {loss:.4f}")
+print(f"Validation Accuracy: {accuracy*100:.2f}%")
+
+evaluate_model(
+    model=model,
+    history=history,
+    val_data=val_ds,
+    model_name=MODEL_NAME,
+    training_time=training_time,
+    model_path=MODEL_FILE
+)
+
+print("Evaluation completed.")
