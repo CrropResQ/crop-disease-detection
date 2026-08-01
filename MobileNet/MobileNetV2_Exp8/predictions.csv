@@ -1,0 +1,764 @@
+y_true,y_pred,true_label,predicted_label
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,5,Bacterial Leaf Blight,Sheath Blight
+0,5,Bacterial Leaf Blight,Sheath Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,5,Bacterial Leaf Blight,Sheath Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,5,Bacterial Leaf Blight,Sheath Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,1,Bacterial Leaf Blight,Brown Spot
+0,1,Bacterial Leaf Blight,Brown Spot
+0,4,Bacterial Leaf Blight,Leaf scald
+0,4,Bacterial Leaf Blight,Leaf scald
+0,1,Bacterial Leaf Blight,Brown Spot
+0,1,Bacterial Leaf Blight,Brown Spot
+0,4,Bacterial Leaf Blight,Leaf scald
+0,4,Bacterial Leaf Blight,Leaf scald
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,1,Bacterial Leaf Blight,Brown Spot
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,4,Bacterial Leaf Blight,Leaf scald
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+0,0,Bacterial Leaf Blight,Bacterial Leaf Blight
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,2,Brown Spot,Healthy Rice Leaf
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,5,Brown Spot,Sheath Blight
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,2,Brown Spot,Healthy Rice Leaf
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,2,Brown Spot,Healthy Rice Leaf
+1,2,Brown Spot,Healthy Rice Leaf
+1,2,Brown Spot,Healthy Rice Leaf
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,0,Brown Spot,Bacterial Leaf Blight
+1,0,Brown Spot,Bacterial Leaf Blight
+1,0,Brown Spot,Bacterial Leaf Blight
+1,0,Brown Spot,Bacterial Leaf Blight
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,4,Brown Spot,Leaf scald
+1,1,Brown Spot,Brown Spot
+1,2,Brown Spot,Healthy Rice Leaf
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+1,1,Brown Spot,Brown Spot
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,1,Healthy Rice Leaf,Brown Spot
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,1,Healthy Rice Leaf,Brown Spot
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,5,Healthy Rice Leaf,Sheath Blight
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,1,Healthy Rice Leaf,Brown Spot
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,4,Healthy Rice Leaf,Leaf scald
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+2,2,Healthy Rice Leaf,Healthy Rice Leaf
+3,4,Leaf Blast,Leaf scald
+3,4,Leaf Blast,Leaf scald
+3,1,Leaf Blast,Brown Spot
+3,4,Leaf Blast,Leaf scald
+3,1,Leaf Blast,Brown Spot
+3,4,Leaf Blast,Leaf scald
+3,4,Leaf Blast,Leaf scald
+3,1,Leaf Blast,Brown Spot
+3,5,Leaf Blast,Sheath Blight
+3,1,Leaf Blast,Brown Spot
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,1,Leaf Blast,Brown Spot
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,1,Leaf Blast,Brown Spot
+3,4,Leaf Blast,Leaf scald
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,4,Leaf Blast,Leaf scald
+3,4,Leaf Blast,Leaf scald
+3,4,Leaf Blast,Leaf scald
+3,4,Leaf Blast,Leaf scald
+3,4,Leaf Blast,Leaf scald
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,4,Leaf Blast,Leaf scald
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,1,Leaf Blast,Brown Spot
+3,1,Leaf Blast,Brown Spot
+3,1,Leaf Blast,Brown Spot
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,1,Leaf Blast,Brown Spot
+3,5,Leaf Blast,Sheath Blight
+3,4,Leaf Blast,Leaf scald
+3,1,Leaf Blast,Brown Spot
+3,1,Leaf Blast,Brown Spot
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,1,Leaf Blast,Brown Spot
+3,3,Leaf Blast,Leaf Blast
+3,4,Leaf Blast,Leaf scald
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,4,Leaf Blast,Leaf scald
+3,1,Leaf Blast,Brown Spot
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,5,Leaf Blast,Sheath Blight
+3,1,Leaf Blast,Brown Spot
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,5,Leaf Blast,Sheath Blight
+3,5,Leaf Blast,Sheath Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,1,Leaf Blast,Brown Spot
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,4,Leaf Blast,Leaf scald
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,4,Leaf Blast,Leaf scald
+3,4,Leaf Blast,Leaf scald
+3,1,Leaf Blast,Brown Spot
+3,1,Leaf Blast,Brown Spot
+3,1,Leaf Blast,Brown Spot
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,1,Leaf Blast,Brown Spot
+3,1,Leaf Blast,Brown Spot
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,0,Leaf Blast,Bacterial Leaf Blight
+3,4,Leaf Blast,Leaf scald
+3,1,Leaf Blast,Brown Spot
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,5,Leaf scald,Sheath Blight
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,1,Leaf scald,Brown Spot
+4,4,Leaf scald,Leaf scald
+4,1,Leaf scald,Brown Spot
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,5,Leaf scald,Sheath Blight
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,0,Leaf scald,Bacterial Leaf Blight
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,1,Leaf scald,Brown Spot
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,0,Leaf scald,Bacterial Leaf Blight
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,0,Leaf scald,Bacterial Leaf Blight
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,0,Leaf scald,Bacterial Leaf Blight
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,0,Leaf scald,Bacterial Leaf Blight
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,0,Leaf scald,Bacterial Leaf Blight
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+4,4,Leaf scald,Leaf scald
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,4,Sheath Blight,Leaf scald
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,4,Sheath Blight,Leaf scald
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,0,Sheath Blight,Bacterial Leaf Blight
+5,0,Sheath Blight,Bacterial Leaf Blight
+5,0,Sheath Blight,Bacterial Leaf Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,4,Sheath Blight,Leaf scald
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,0,Sheath Blight,Bacterial Leaf Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,4,Sheath Blight,Leaf scald
+5,0,Sheath Blight,Bacterial Leaf Blight
+5,4,Sheath Blight,Leaf scald
+5,0,Sheath Blight,Bacterial Leaf Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,4,Sheath Blight,Leaf scald
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,0,Sheath Blight,Bacterial Leaf Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,0,Sheath Blight,Bacterial Leaf Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,1,Sheath Blight,Brown Spot
+5,5,Sheath Blight,Sheath Blight
+5,5,Sheath Blight,Sheath Blight
+5,4,Sheath Blight,Leaf scald
+5,5,Sheath Blight,Sheath Blight
+5,1,Sheath Blight,Brown Spot
+5,4,Sheath Blight,Leaf scald
+5,5,Sheath Blight,Sheath Blight
