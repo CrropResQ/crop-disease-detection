@@ -28,7 +28,9 @@ from tensorflow.keras.layers import (
 )
 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
 from tensorflow.keras.optimizers import Adam
+
 from tensorflow.keras.callbacks import (
     EarlyStopping,
     ModelCheckpoint
@@ -64,7 +66,7 @@ BATCH_SIZE = 32
 
 EPOCHS = 25
 
-LEARNING_RATE = 0.0005
+LEARNING_RATE = 1e-5
 
 MODEL_NAME = "ResNet50"
 

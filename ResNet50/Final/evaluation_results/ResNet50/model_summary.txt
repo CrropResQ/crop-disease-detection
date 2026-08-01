@@ -1,0 +1,5 @@
+Model : ResNet50
+Model Size : 206.90 MB
+Total Parameters : 24113798
+Trainable Parameters : 14976262
+Non Trainable Parameters : 9137536
